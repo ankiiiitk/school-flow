@@ -8,466 +8,519 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Outfit (Headings) & DM Sans (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Custom Tailwind Configuration for Exact Colors -->
+    <!-- Tailwind Configuration for Sapphire, Ocean & Neon Jade -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'red-orange': '#FF471A',
-                        'red-orange-dark': '#E0360D',
-                        'yellow-punk': '#FFE800',
-                        'yellow-punk-light': '#FFF04B',
-                        'snowy-white': '#FAFCFF',
-                        'charcoal': '#1C1E24'
+                        'sapphire-dark': '#061325',
+                        'sapphire': '#0A2540',
+                        'sapphire-light': '#123B66',
+                        'ocean': '#0284C7',
+                        'ocean-dark': '#0369A1',
+                        'ocean-light': '#38BDF8',
+                        'ocean-surface': '#F0F9FF',
+                        'neon-jade': '#00FFA3',
+                        'neon-jade-dark': '#00D687',
+                        'snowy-white': '#F8FAFC',
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Bebas Neue"', 'sans-serif'],
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        display: ['"Outfit"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
-        .river-gradient {
-            background: linear-gradient(135deg, rgba(28, 30, 36, 0.85) 0%, rgba(255, 71, 26, 0.75) 100%);
+        .font-display {
+            font-family: 'Outfit', sans-serif;
         }
-        .punk-glow {
-            box-shadow: 0 4px 20px -2px rgba(255, 232, 0, 0.4);
+        .jade-glow {
+            box-shadow: 0 0 25px -3px rgba(0, 255, 163, 0.45);
         }
-        .orange-glow {
-            box-shadow: 0 4px 25px -2px rgba(255, 71, 26, 0.35);
+        .jade-border-glow {
+            box-shadow: inset 0 0 15px rgba(0, 255, 163, 0.2);
+        }
+        .ocean-gradient {
+            background: linear-gradient(135deg, #0A2540 0%, #0369A1 60%, #0284C7 100%);
+        }
+        .river-mesh {
+            background: radial-gradient(circle at 80% 20%, rgba(0, 255, 163, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(2, 132, 199, 0.25) 0%, transparent 50%),
+                        #061325;
         }
     </style>
 </head>
-<body class="bg-snowy-white text-charcoal font-sans antialiased overflow-x-hidden">
+<body class="bg-snowy-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-neon-jade selection:text-sapphire-dark">
 
-    <!-- TOP NOTIFICATION BAR / EMERGENCY TICKER -->
-    <div class="bg-charcoal text-snowy-white py-2 px-4 text-xs font-medium border-b border-yellow-punk/30">
+    <!-- TOP NOTIFICATION BAR -->
+    <div class="bg-sapphire-dark text-snowy-white py-2 px-4 text-xs font-medium border-b border-ocean/30">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
             <div class="flex items-center space-x-2">
-                <span class="bg-yellow-punk text-charcoal text-[10px] font-extrabold uppercase px-2 py-0.5 rounded">Notice</span>
-                <span class="truncate">Admissions Open for Classes 6th to 11th (Science & Arts) — 2026-27 Academic Session!</span>
+                <span class="bg-neon-jade text-sapphire-dark text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                    New Update
+                </span>
+                <span class="truncate text-slate-300">
+                    Admissions Open for Classes 6th to 11th (Science & Arts) • Academic Year 2026-27
+                </span>
             </div>
-            <div class="flex items-center space-x-4 text-xs">
-                <a href="tel:+919876543210" class="hover:text-yellow-punk transition"><i class="fa-solid fa-phone mr-1 text-red-orange"></i> Helpdesk: +91 98620 XXXXX</a>
-                <span class="hidden md:inline text-gray-500">|</span>
-                <a href="#portal" class="hover:text-yellow-punk transition hidden sm:inline"><i class="fa-solid fa-user-lock mr-1 text-yellow-punk"></i> Student Portal</a>
+            <div class="flex items-center space-x-5 text-xs text-slate-300">
+                <a href="tel:+919862000000" class="hover:text-neon-jade transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-phone text-neon-jade"></i> +91 98620 XXXXX
+                </a>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <a href="#admissions" class="hover:text-neon-jade transition hidden sm:inline flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pen text-ocean-light"></i> Online Registration
+                </a>
             </div>
         </div>
     </div>
 
     <!-- MAIN NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-snowy-white/95 backdrop-blur-md shadow-md border-b border-gray-100">
+    <header class="sticky top-0 z-50 bg-snowy-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- School Brand/Logo -->
-                <a href="#" class="flex items-center gap-3">
-                    <div class="w-13 h-13 p-2 bg-gradient-to-tr from-red-orange to-yellow-punk rounded-2xl flex items-center justify-center text-charcoal shadow-lg shadow-red-orange/20">
-                        <i class="fa-solid fa-graduation-cap text-2xl text-charcoal"></i>
+                
+                <!-- School Brand / Logo -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-sapphire to-ocean flex items-center justify-center text-snowy-white shadow-md group-hover:scale-105 transition-transform duration-300 border border-neon-jade/30">
+                        <i class="fa-solid fa-water text-xl text-neon-jade"></i>
                     </div>
                     <div>
-                        <span class="font-display tracking-wider text-2xl md:text-3xl text-charcoal block leading-none">
-                            BEREAN BAPTIST <span class="text-red-orange">ACADEMY</span>
+                        <span class="font-display font-black tracking-tight text-xl sm:text-2xl text-sapphire block leading-none">
+                            BEREAN BAPTIST <span class="text-ocean">ACADEMY</span>
                         </span>
-                        <span class="text-[11px] tracking-widest font-semibold text-gray-500 uppercase block mt-1">
-                            Khumji, Noney District, Manipur
+                        <span class="text-[11px] tracking-wider font-semibold text-slate-500 uppercase block mt-1">
+                            Khumji • Noney District, Manipur
                         </span>
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden lg:flex items-center space-x-7 font-semibold text-sm">
-                    <a href="#home" class="text-red-orange transition">Home</a>
-                    <a href="#about" class="text-charcoal hover:text-red-orange transition">About Us</a>
-                    <a href="#academics" class="text-charcoal hover:text-red-orange transition">Academics (6th–12th)</a>
-                    <a href="#facilities" class="text-charcoal hover:text-red-orange transition">Campus Facilities</a>
-                    <a href="#admissions" class="text-charcoal hover:text-red-orange transition">Admissions</a>
-                    <a href="#gallery" class="text-charcoal hover:text-red-orange transition">Gallery</a>
-                    <a href="#contact" class="text-charcoal hover:text-red-orange transition">Contact</a>
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-7 font-medium text-sm text-slate-700">
+                    <a href="#home" class="text-ocean font-semibold hover:text-ocean-dark transition">Home</a>
+                    <a href="#about" class="hover:text-ocean transition">About Us</a>
+                    <a href="#academics" class="hover:text-ocean transition">Academics (6th–12th)</a>
+                    <a href="#facilities" class="hover:text-ocean transition">Facilities</a>
+                    <a href="#admissions" class="hover:text-ocean transition">Admissions</a>
+                    <a href="#gallery" class="hover:text-ocean transition">Campus Life</a>
+                    <a href="#contact" class="hover:text-ocean transition">Contact</a>
                 </nav>
 
-                <!-- Call to Action -->
+                <!-- CTA Button -->
                 <div class="hidden lg:flex items-center space-x-3">
-                    <a href="#admissions" class="bg-red-orange hover:bg-red-orange-dark text-snowy-white font-bold text-xs uppercase px-5 py-3 rounded-xl transition orange-glow flex items-center gap-2">
-                        <span>Apply Online</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <a href="#admissions" class="bg-sapphire hover:bg-sapphire-light text-snowy-white font-display font-semibold text-xs tracking-wider uppercase px-5 py-3 rounded-xl transition flex items-center gap-2 border border-ocean/40 shadow-sm hover:border-neon-jade">
+                        <span>Apply Now</span>
+                        <i class="fa-solid fa-arrow-right text-neon-jade text-xs"></i>
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="lg:hidden p-2 text-charcoal rounded-lg focus:outline-none hover:bg-gray-100">
+                <button id="menu-btn" class="lg:hidden p-2 text-sapphire rounded-lg focus:outline-none hover:bg-slate-100">
                     <i class="fa-solid fa-bars text-2xl"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-snowy-white border-t border-gray-100 px-6 py-5 shadow-xl space-y-4">
-            <a href="#home" class="block font-semibold text-red-orange">Home</a>
-            <a href="#about" class="block font-semibold text-charcoal hover:text-red-orange">About Us</a>
-            <a href="#academics" class="block font-semibold text-charcoal hover:text-red-orange">Academics (6th-12th)</a>
-            <a href="#facilities" class="block font-semibold text-charcoal hover:text-red-orange">Campus Facilities</a>
-            <a href="#admissions" class="block font-semibold text-charcoal hover:text-red-orange">Admissions</a>
-            <a href="#gallery" class="block font-semibold text-charcoal hover:text-red-orange">Gallery</a>
-            <a href="#contact" class="block font-semibold text-charcoal hover:text-red-orange">Contact</a>
-            <a href="#admissions" class="block text-center bg-red-orange text-snowy-white font-bold py-2.5 rounded-lg text-sm">Apply Online</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-snowy-white border-t border-slate-200 px-6 py-5 shadow-xl space-y-3 font-medium">
+            <a href="#home" class="block text-ocean font-semibold">Home</a>
+            <a href="#about" class="block text-slate-700 hover:text-ocean">About Us</a>
+            <a href="#academics" class="block text-slate-700 hover:text-ocean">Academics (6th to 12th)</a>
+            <a href="#facilities" class="block text-slate-700 hover:text-ocean">Campus Facilities</a>
+            <a href="#admissions" class="block text-slate-700 hover:text-ocean">Admissions</a>
+            <a href="#gallery" class="block text-slate-700 hover:text-ocean">Photo Gallery</a>
+            <a href="#contact" class="block text-slate-700 hover:text-ocean">Contact Info</a>
+            <a href="#admissions" class="block text-center bg-sapphire text-neon-jade font-display font-bold py-3 rounded-xl text-xs uppercase tracking-wider mt-4">
+                Enroll Online
+            </a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="home" class="relative min-h-[90vh] flex items-center justify-center text-snowy-white overflow-hidden">
-        <!-- Background Imagery (Scenic River / Campus Inspiration) -->
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1920&auto=format&fit=crop');">
-            <div class="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/80 to-red-orange/60"></div>
-        </div>
+    <section id="home" class="relative min-h-[92vh] flex items-center river-mesh text-snowy-white overflow-hidden">
+        <!-- Background Imagery Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=1920&auto=format&fit=crop');"></div>
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center lg:text-left">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-8 space-y-6">
-                    <div class="inline-flex items-center gap-2 bg-yellow-punk/20 border border-yellow-punk px-3.5 py-1.5 rounded-full backdrop-blur-md">
-                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-punk animate-pulse"></span>
-                        <span class="text-xs uppercase font-extrabold tracking-wider text-yellow-punk">Excellence in Christian & Modern Education</span>
+                
+                <div class="lg:col-span-8 space-y-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-sapphire/80 border border-neon-jade/40 px-4 py-1.5 rounded-full backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-neon-jade animate-ping"></span>
+                        <span class="text-xs font-display font-bold uppercase tracking-widest text-neon-jade">Khumji, Noney • Grades 6 to 12</span>
                     </div>
 
-                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
-                        NURTURING MINDS <br>
-                        <span class="text-yellow-punk underline decoration-red-orange decoration-wavy underline-offset-8">BY THE TRANQUIL RIVER</span>
+                    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08]">
+                        WISDOM BESIDE <br>
+                        <span class="bg-gradient-to-r from-ocean-light via-snowy-white to-neon-jade bg-clip-text text-transparent">
+                            THE TRANQUIL WATERS
+                        </span>
                     </h1>
 
-                    <p class="text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed">
-                        Situated at Khumji along the pristine river waters of Noney, Berean Baptist Academy fosters intellectual vitality, moral conviction, and holistic personal growth for students from <strong>Class 6th to Class 12th</strong>.
+                    <p class="text-base sm:text-lg md:text-xl text-slate-300 max-w-2xl font-normal leading-relaxed">
+                        Berean Baptist Academy pairs academic rigor with Christian character on our scenic riverbank campus in Khumji. Empowering young leaders from <strong>Class 6th to Class 12th</strong> with modern labs, athletic grounds, and holistic mentorship.
                     </p>
 
-                    <div class="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start">
-                        <a href="#admissions" class="bg-red-orange hover:bg-red-orange-dark text-snowy-white font-bold px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all transform hover:-translate-y-1 shadow-lg orange-glow flex items-center gap-2">
-                            <span>Enroll for 2026-27</span>
-                            <i class="fa-solid fa-arrow-right"></i>
+                    <div class="flex flex-wrap gap-4 pt-3 justify-center lg:justify-start">
+                        <a href="#admissions" class="bg-neon-jade hover:bg-neon-jade-dark text-sapphire-dark font-display font-bold px-8 py-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 transform hover:-translate-y-0.5 jade-glow flex items-center gap-2.5">
+                            <span>Admissions 2026-27</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
                         </a>
-                        <a href="#facilities" class="bg-yellow-punk hover:bg-yellow-punk-light text-charcoal font-black px-8 py-4 rounded-xl text-sm uppercase tracking-wider transition-all transform hover:-translate-y-1 punk-glow flex items-center gap-2">
-                            <span>Explore Campus</span>
-                            <i class="fa-solid fa-compass"></i>
+                        <a href="#facilities" class="bg-ocean/30 hover:bg-ocean/50 text-snowy-white border border-ocean-light/40 font-display font-semibold px-8 py-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 backdrop-blur-sm flex items-center gap-2.5">
+                            <span>Explore Facilities</span>
+                            <i class="fa-solid fa-compass text-neon-jade text-xs"></i>
                         </a>
                     </div>
 
-                    <!-- Quick Highlights Counter -->
-                    <div class="grid grid-cols-3 gap-6 pt-10 border-t border-white/20 max-w-lg">
+                    <!-- Campus Highlights -->
+                    <div class="grid grid-cols-3 gap-6 pt-10 border-t border-slate-700/60 max-w-xl">
                         <div>
-                            <span class="block text-3xl font-extrabold text-yellow-punk">6th - 12th</span>
-                            <span class="text-xs text-gray-300 font-medium">Classes Offered</span>
+                            <span class="font-display block text-3xl sm:text-4xl font-extrabold text-neon-jade">6th–12th</span>
+                            <span class="text-xs text-slate-400 font-medium tracking-wide">High & Senior Secondary</span>
                         </div>
                         <div>
-                            <span class="block text-3xl font-extrabold text-snowy-white">100%</span>
-                            <span class="text-xs text-gray-300 font-medium">Dedicated Mentorship</span>
+                            <span class="font-display block text-3xl sm:text-4xl font-extrabold text-ocean-light">Riverbank</span>
+                            <span class="text-xs text-slate-400 font-medium tracking-wide">Khumji, Noney Campus</span>
                         </div>
                         <div>
-                            <span class="block text-3xl font-extrabold text-yellow-punk">Khumji</span>
-                            <span class="text-xs text-gray-300 font-medium">Scenic River Campus</span>
+                            <span class="font-display block text-3xl sm:text-4xl font-extrabold text-snowy-white">100%</span>
+                            <span class="text-xs text-slate-400 font-medium tracking-wide">Holistic Development</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Floating Card: Admission Spotlight -->
+                <!-- Floating Admission Card -->
                 <div class="lg:col-span-4 hidden lg:block">
-                    <div class="bg-snowy-white text-charcoal p-7 rounded-3xl shadow-2xl border-4 border-yellow-punk">
-                        <div class="bg-red-orange text-snowy-white text-[11px] font-black uppercase px-3 py-1 rounded-md inline-block mb-4">
-                            Notice Board
+                    <div class="bg-sapphire/90 border border-ocean/50 backdrop-blur-xl text-snowy-white p-8 rounded-3xl shadow-2xl relative">
+                        <div class="absolute -top-3 right-6 bg-neon-jade text-sapphire-dark font-display text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider">
+                            Enrollment Desk
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Admission Criteria & Registration</h3>
-                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
-                            Limited seats for Boarders and Day Scholars in High School and Higher Secondary (Arts & Science).
+                        <h3 class="font-display text-2xl font-bold mb-2">Join the Academy</h3>
+                        <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+                            Securing admission for both Day Scholars and Boarding Students across Manipur.
                         </p>
-                        <ul class="space-y-3 text-sm font-semibold mb-6">
-                            <li class="flex items-center gap-2 text-charcoal">
-                                <i class="fa-solid fa-circle-check text-red-orange"></i> Form issuance starts January
-                            </li>
-                            <li class="flex items-center gap-2 text-charcoal">
-                                <i class="fa-solid fa-circle-check text-red-orange"></i> Entrance Assessment
-                            </li>
-                            <li class="flex items-center gap-2 text-charcoal">
-                                <i class="fa-solid fa-circle-check text-red-orange"></i> Hostel seat allocation
-                            </li>
-                        </ul>
-                        <a href="#admissions" class="block text-center w-full bg-charcoal text-yellow-punk font-bold py-3 rounded-xl hover:bg-black transition">
-                            Download Prospectus
+                        
+                        <div class="space-y-4 text-xs text-slate-200 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-lg bg-neon-jade/20 text-neon-jade flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                                <span>Arts & Science Streams (Class 11 & 12)</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-lg bg-neon-jade/20 text-neon-jade flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                                <span>High-Tech Computer Lab Curriculum</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-lg bg-neon-jade/20 text-neon-jade flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-[10px]"></i>
+                                </div>
+                                <span>Sports Fields & Hostel Available</span>
+                            </div>
+                        </div>
+
+                        <a href="#admissions" class="block text-center w-full bg-ocean hover:bg-ocean-dark text-snowy-white font-display font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition">
+                            Inquire for Admission
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="about" class="py-20 bg-snowy-white">
+    <section id="about" class="py-24 bg-snowy-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-                <!-- Image Collage -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Imagery with Riverside Accent -->
                 <div class="relative">
-                    <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-charcoal">
-                        <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=800&auto=format&fit=crop" alt="School building and students" class="w-full h-[420px] object-cover">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-sapphire">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="Students in Classroom" class="w-full h-[440px] object-cover">
                     </div>
-                    <div class="absolute -bottom-8 -right-6 bg-yellow-punk p-6 rounded-2xl shadow-xl border-2 border-charcoal hidden sm:block max-w-[240px]">
-                        <i class="fa-solid fa-water text-3xl text-charcoal mb-2"></i>
-                        <h4 class="font-bold text-sm text-charcoal">Riverside Setting</h4>
-                        <p class="text-xs text-charcoal/80 font-medium">Serene & noise-free natural learning environment in Khumji, Noney.</p>
+                    <!-- Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-sapphire text-snowy-white p-6 rounded-2xl shadow-xl border-2 border-neon-jade hidden sm:block max-w-[260px]">
+                        <i class="fa-solid fa-water text-3xl text-neon-jade mb-2"></i>
+                        <h4 class="font-display font-bold text-sm text-snowy-white">Riverside Sanctuary</h4>
+                        <p class="text-xs text-slate-300 font-normal mt-1">Nourished by the serene waters of Khumji, far removed from urban commotion.</p>
                     </div>
                 </div>
 
-                <!-- Text -->
+                <!-- Text Content -->
                 <div class="space-y-6">
-                    <div class="inline-block bg-red-orange/10 text-red-orange px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                        Who We Are
+                    <div class="inline-block bg-ocean/10 text-ocean-dark px-3.5 py-1 rounded-full text-xs font-display font-bold uppercase tracking-wider">
+                        About Berean Baptist Academy
                     </div>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-charcoal leading-tight">
-                        Rooted in Faith, <br>
-                        <span class="text-red-orange">Engineered for Academic Brilliance</span>
+
+                    <h2 class="font-display text-3xl md:text-5xl font-extrabold text-sapphire leading-tight">
+                        Cultivating Character, <br>
+                        <span class="text-ocean">Inspiring Lifelong Excellence</span>
                     </h2>
-                    <p class="text-gray-600 leading-relaxed">
-                        Berean Baptist Academy, established in Khumji, Noney District, is devoted to providing quality, holistic, and value-based education. Inspired by Biblical wisdom and modern educational paradigms, we instill discipline, leadership, and moral rectitude in every student.
-                    </p>
-                    <p class="text-gray-600 leading-relaxed">
-                        Our position beside the river not only provides picturesque vistas of Manipur's hill landscapes, but also ensures a peaceful atmosphere free from urban distractions—the perfect sanctuary for adolescent development.
+
+                    <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                        Nestled in the green hills of Khumji, Noney District, Berean Baptist Academy was established to provide sound academic training infused with Biblical ethics. We cater specifically to youth progressing through their most vital educational milestones—from Class 6th to Class 12th.
                     </p>
 
-                    <!-- Features bullets -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-yellow-punk flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-cross text-charcoal text-xs"></i>
+                    <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+                        The presence of the river by our campus fosters peace, contemplative study, and close connection with nature, giving our students the ideal foundation to grow intellectually, spiritually, and socially.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
+                        <div class="flex items-start gap-3.5 p-3 rounded-xl bg-ocean-surface border border-ocean/20">
+                            <div class="w-9 h-9 rounded-lg bg-sapphire text-neon-jade flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bible text-sm"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-sm">Christian Values</h4>
-                                <p class="text-xs text-gray-500">Character & ethics development.</p>
+                                <h4 class="font-display font-bold text-sm text-sapphire">Christian Principles</h4>
+                                <p class="text-xs text-slate-500">Integrity, service, and high moral standards.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-red-orange flex items-center justify-center shrink-0 text-snowy-white">
-                                <i class="fa-solid fa-flask text-xs"></i>
+
+                        <div class="flex items-start gap-3.5 p-3 rounded-xl bg-ocean-surface border border-ocean/20">
+                            <div class="w-9 h-9 rounded-lg bg-ocean text-snowy-white flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-atom text-sm"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-sm">Modern STEM</h4>
-                                <p class="text-xs text-gray-500">Rigorous lab & computer sessions.</p>
+                                <h4 class="font-display font-bold text-sm text-sapphire">Academic Focus</h4>
+                                <p class="text-xs text-slate-500">STEM laboratories & Arts education.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ACADEMICS SECTION (6th to 12th) -->
-    <section id="academics" class="py-20 bg-gray-50 border-y border-gray-200">
+    <!-- ACADEMICS SECTION (Class 6th to Class 12th) -->
+    <section id="academics" class="py-24 bg-slate-50 border-y border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-orange font-bold text-xs uppercase tracking-widest bg-red-orange/10 px-3 py-1 rounded-full">Curriculum Pathway</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-charcoal mt-3">From Middle School to Senior Secondary</h2>
-                <p class="text-gray-600 text-sm md:text-base mt-4">We are tailored exclusively for students from Class 6th up to Class 12th, ensuring rigorous preparation for Board Examinations and competitive careers.</p>
+                <span class="text-ocean-dark bg-ocean/10 font-display font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">Educational Structure</span>
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-sapphire mt-3">Curriculum for Classes 6th–12th</h2>
+                <p class="text-slate-600 text-sm md:text-base mt-4">Focused academic progression tailored to prepare students for Board Examinations and higher competitive careers across India.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
                 <!-- Middle School: 6th - 8th -->
-                <div class="bg-snowy-white rounded-3xl p-8 border-2 border-transparent hover:border-yellow-punk transition shadow-lg relative group">
-                    <div class="w-14 h-14 bg-yellow-punk rounded-2xl flex items-center justify-center text-charcoal text-2xl font-bold mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-book-open-reader"></i>
+                <div class="bg-snowy-white rounded-3xl p-8 border border-slate-200 shadow-md hover:border-ocean transition duration-300 group">
+                    <div class="w-14 h-14 bg-ocean-surface text-ocean rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-ocean group-hover:text-snowy-white transition">
+                        <i class="fa-solid fa-shapes"></i>
                     </div>
-                    <span class="text-xs font-bold uppercase text-red-orange tracking-wider">Foundation Years</span>
-                    <h3 class="text-2xl font-extrabold text-charcoal mt-1 mb-3">Middle School</h3>
-                    <p class="text-sm font-bold text-gray-700 mb-4 bg-gray-100 inline-block px-3 py-1 rounded-md">Classes 6th to 8th</p>
-                    <p class="text-xs text-gray-600 leading-relaxed mb-6">
-                        Focusing on strong foundational principles in Mathematics, General Science, English Literature, Social Sciences, Computer Basics, and Spiritual Education.
+                    <span class="font-display text-xs font-bold uppercase text-ocean tracking-wider">Foundation Stage</span>
+                    <h3 class="font-display text-2xl font-extrabold text-sapphire mt-1 mb-2">Middle School</h3>
+                    <span class="inline-block text-xs font-semibold text-sapphire-light bg-slate-100 px-3 py-1 rounded-md mb-4">Classes 6th to 8th</span>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                        Instills fundamentals across English, Mathematics, General Sciences, Social Studies, and Basic Computer Science alongside value education.
                     </p>
-                    <ul class="text-xs font-semibold text-gray-600 space-y-2">
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Activity-based learning</li>
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Moral instruction & Chapel service</li>
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Language lab & reading circles</li>
+                    <ul class="text-xs text-slate-600 space-y-2.5 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Interactive science projects</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Foundational computer lab exposure</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Moral and character instruction</li>
                     </ul>
                 </div>
 
                 <!-- Secondary School: 9th - 10th -->
-                <div class="bg-snowy-white rounded-3xl p-8 border-2 border-red-orange shadow-xl relative group transform md:-translate-y-2">
-                    <div class="absolute -top-3 right-6 bg-red-orange text-snowy-white text-[10px] font-black uppercase px-3 py-1 rounded-full">
+                <div class="bg-sapphire text-snowy-white rounded-3xl p-8 border-2 border-neon-jade shadow-xl relative group transform md:-translate-y-3">
+                    <div class="absolute -top-3.5 right-6 bg-neon-jade text-sapphire-dark font-display text-[10px] font-black uppercase px-3 py-1 rounded-full">
                         Board Preparation
                     </div>
-                    <div class="w-14 h-14 bg-red-orange rounded-2xl flex items-center justify-center text-snowy-white text-2xl font-bold mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-award"></i>
+                    <div class="w-14 h-14 bg-ocean text-snowy-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:scale-105 transition">
+                        <i class="fa-solid fa-graduation-cap"></i>
                     </div>
-                    <span class="text-xs font-bold uppercase text-red-orange tracking-wider">Secondary Stage</span>
-                    <h3 class="text-2xl font-extrabold text-charcoal mt-1 mb-3">High School</h3>
-                    <p class="text-sm font-bold text-gray-700 mb-4 bg-gray-100 inline-block px-3 py-1 rounded-md">Classes 9th & 10th (HSLC)</p>
-                    <p class="text-xs text-gray-600 leading-relaxed mb-6">
-                        Rigorous academic preparation following state and national benchmarks. Comprehensive mock examinations and continuous diagnostic remedial classes.
+                    <span class="font-display text-xs font-bold uppercase text-neon-jade tracking-wider">Secondary Stage</span>
+                    <h3 class="font-display text-2xl font-extrabold text-snowy-white mt-1 mb-2">High School</h3>
+                    <span class="inline-block text-xs font-semibold text-ocean-light bg-sapphire-dark px-3 py-1 rounded-md mb-4">Classes 9th & 10th (HSLC)</span>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-6">
+                        Disciplined preparation for state and national examinations, diagnostic remedial assessments, and laboratory experiments.
                     </p>
-                    <ul class="text-xs font-semibold text-gray-600 space-y-2">
-                        <li><i class="fa-solid fa-check text-red-orange mr-2"></i> Science laboratory practicals</li>
-                        <li><i class="fa-solid fa-check text-red-orange mr-2"></i> Regular mock assessments</li>
-                        <li><i class="fa-solid fa-check text-red-orange mr-2"></i> Career counseling seminars</li>
+                    <ul class="text-xs text-slate-200 space-y-2.5 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-neon-jade"></i> Comprehensive mock testing</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-neon-jade"></i> Practical laboratory classes</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-neon-jade"></i> Mentorship & study guidance</li>
                     </ul>
                 </div>
 
                 <!-- Higher Secondary: 11th - 12th -->
-                <div class="bg-snowy-white rounded-3xl p-8 border-2 border-transparent hover:border-yellow-punk transition shadow-lg relative group">
-                    <div class="w-14 h-14 bg-charcoal rounded-2xl flex items-center justify-center text-yellow-punk text-2xl font-bold mb-6 group-hover:scale-110 transition">
-                        <i class="fa-solid fa-microscope"></i>
+                <div class="bg-snowy-white rounded-3xl p-8 border border-slate-200 shadow-md hover:border-ocean transition duration-300 group">
+                    <div class="w-14 h-14 bg-ocean-surface text-ocean rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-ocean group-hover:text-snowy-white transition">
+                        <i class="fa-solid fa-flask-vial"></i>
                     </div>
-                    <span class="text-xs font-bold uppercase text-red-orange tracking-wider">Senior Secondary</span>
-                    <h3 class="text-2xl font-extrabold text-charcoal mt-1 mb-3">Higher Secondary</h3>
-                    <p class="text-sm font-bold text-gray-700 mb-4 bg-gray-100 inline-block px-3 py-1 rounded-md">Classes 11th & 12th (Arts & Science)</p>
-                    <p class="text-xs text-gray-600 leading-relaxed mb-6">
-                        Offering dedicated streams in Science (Physics, Chemistry, Biology/Maths) and Arts (Pol Science, History, Economics) to equip students for national entrance exams.
+                    <span class="font-display text-xs font-bold uppercase text-ocean tracking-wider">Senior Stage</span>
+                    <h3 class="font-display text-2xl font-extrabold text-sapphire mt-1 mb-2">Higher Secondary</h3>
+                    <span class="inline-block text-xs font-semibold text-sapphire-light bg-slate-100 px-3 py-1 rounded-md mb-4">Classes 11th & 12th (Arts & Science)</span>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                        Dedicated academic tracks for Science (PCM/PCB) and Humanities/Arts, oriented towards collegiate admissions and competitive exams.
                     </p>
-                    <ul class="text-xs font-semibold text-gray-600 space-y-2">
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Advanced laboratory experiments</li>
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Dedicated competitive guidance</li>
-                        <li><i class="fa-solid fa-check text-yellow-punk mr-2"></i> Focus on collegiate admissions</li>
+                    <ul class="text-xs text-slate-600 space-y-2.5 font-medium">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Physics, Chemistry & Biology Labs</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Political Science, History, Economics</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-ocean"></i> Career path counseling</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CAMPUS & FACILITIES (Playground, Computer Lab, Buildings, River) -->
-    <section id="facilities" class="py-20 bg-snowy-white">
+    <!-- CAMPUS & FACILITIES -->
+    <section id="facilities" class="py-24 bg-snowy-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
                 <div>
-                    <span class="text-red-orange font-bold text-xs uppercase tracking-widest bg-red-orange/10 px-3 py-1 rounded-full">World-Class Infrastructure</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold text-charcoal mt-3">Campus Built For Achievement</h2>
+                    <span class="text-ocean-dark bg-ocean/10 font-display font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">Modern Infrastructure</span>
+                    <h2 class="font-display text-3xl md:text-5xl font-extrabold text-sapphire mt-3">Equipped for Growth</h2>
                 </div>
-                <p class="text-gray-500 max-w-md text-sm mt-4 md:mt-0">
-                    Our facilities at Khumji empower students with both cutting-edge technology and expansive recreational spaces.
+                <p class="text-slate-500 max-w-md text-sm mt-4 md:mt-0 leading-relaxed">
+                    Set alongside the river in Khumji, the campus features robust buildings, advanced technology labs, and spacious athletic facilities.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
                 <!-- Facility 1: Computer Lab -->
-                <div class="group rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-md hover:shadow-xl transition">
+                <div class="group rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition duration-300">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" alt="Computer Lab" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-yellow-punk text-charcoal font-bold text-[10px] uppercase px-2.5 py-1 rounded">High-Tech</span>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop" alt="Computer Lab" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-sapphire text-neon-jade font-display font-bold text-[10px] uppercase px-2.5 py-1 rounded-md tracking-wider">IT & Digital</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-extrabold text-lg text-charcoal mb-2">Modern Computer Lab</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            Equipped with updated computer systems, high-speed connectivity, and curriculum training in coding, productivity software, and digital literacy.
+                        <h3 class="font-display font-extrabold text-lg text-sapphire mb-2">Modern Computer Lab</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Full workstation access with high-speed internet, programming basics, software applications, and digital skills education.
                         </p>
                     </div>
                 </div>
 
-                <!-- Facility 2: Spacious Playground -->
-                <div class="group rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-md hover:shadow-xl transition">
+                <!-- Facility 2: Playground -->
+                <div class="group rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition duration-300">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600&auto=format&fit=crop" alt="Playground and Football" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-red-orange text-snowy-white font-bold text-[10px] uppercase px-2.5 py-1 rounded">Sports & Fitness</span>
+                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=600&auto=format&fit=crop" alt="Playground and Football" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-ocean text-snowy-white font-display font-bold text-[10px] uppercase px-2.5 py-1 rounded-md tracking-wider">Athletics</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-extrabold text-lg text-charcoal mb-2">Sports Playground</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            An open green field for football, volleyball, athletics, and annual sports meets encouraging teamwork, stamina, and healthy sportsmanship.
+                        <h3 class="font-display font-extrabold text-lg text-sapphire mb-2">Spacious Playground</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Expansive open-air sports grounds for football, volleyball, track events, physical education, and the annual academy sports meet.
                         </p>
                     </div>
                 </div>
 
-                <!-- Facility 3: Concrete Modern Buildings -->
-                <div class="group rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-md hover:shadow-xl transition">
+                <!-- Facility 3: Buildings -->
+                <div class="group rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition duration-300">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=600&auto=format&fit=crop" alt="School Infrastructure" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-yellow-punk text-charcoal font-bold text-[10px] uppercase px-2.5 py-1 rounded">Classrooms</span>
+                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=600&auto=format&fit=crop" alt="School Infrastructure" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-sapphire text-neon-jade font-display font-bold text-[10px] uppercase px-2.5 py-1 rounded-md tracking-wider">Campus</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-extrabold text-lg text-charcoal mb-2">Safe & Spacious Buildings</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            Multi-story ventilated buildings with bright, audio-visual-capable classrooms, separate administrative wings, and secure hostel dormitories.
+                        <h3 class="font-display font-extrabold text-lg text-sapphire mb-2">Modern Buildings</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Well-engineered, airy academic blocks featuring spacious classrooms, staff rooms, an assembly hall, and safe boarding quarters.
                         </p>
                     </div>
                 </div>
 
-                <!-- Facility 4: Riverfront Nature & Tranquility -->
-                <div class="group rounded-3xl overflow-hidden border border-gray-200 bg-white shadow-md hover:shadow-xl transition">
+                <!-- Facility 4: River Location -->
+                <div class="group rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-xl transition duration-300">
                     <div class="h-48 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&auto=format&fit=crop" alt="River in Manipur Hills" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 left-3 bg-charcoal text-yellow-punk font-bold text-[10px] uppercase px-2.5 py-1 rounded">Nature</span>
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&auto=format&fit=crop" alt="River in Manipur" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <span class="absolute top-3 left-3 bg-ocean-dark text-snowy-white font-display font-bold text-[10px] uppercase px-2.5 py-1 rounded-md tracking-wider">Environment</span>
                     </div>
                     <div class="p-6">
-                        <h3 class="font-extrabold text-lg text-charcoal mb-2">Serene River Location</h3>
-                        <p class="text-xs text-gray-600 leading-relaxed">
-                            Positioned directly by the Khumji riverbank, providing fresh mountain air, quiet reading spots, and an inspiring natural learning retreat.
+                        <h3 class="font-display font-extrabold text-lg text-sapphire mb-2">Riverside Setting</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Located next to the river in Khumji, offering fresh air, scenic river views, and a calm, quiet atmosphere for studying.
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ADMISSIONS & INQUIRY SECTION -->
-    <section id="admissions" class="py-20 bg-charcoal text-snowy-white relative overflow-hidden">
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-red-orange/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-yellow-punk/10 rounded-full blur-3xl"></div>
+    <!-- ADMISSION ENROLLMENT & INQUIRY FORM -->
+    <section id="admissions" class="py-24 bg-sapphire-dark text-snowy-white relative overflow-hidden">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-ocean/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-neon-jade/10 rounded-full blur-3xl"></div>
 
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-6 space-y-6">
-                    <span class="bg-yellow-punk text-charcoal font-black text-xs uppercase px-3 py-1 rounded-md">Admissions Open 2026-27</span>
-                    <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">
-                        Shape Your Child’s Future at <span class="text-red-orange">Berean Baptist Academy</span>
+                    <span class="bg-neon-jade text-sapphire-dark font-display font-black text-xs uppercase px-3.5 py-1.5 rounded-full tracking-wider">
+                        Enrollment 2026-27
+                    </span>
+                    <h2 class="font-display text-3xl md:text-5xl font-extrabold leading-tight">
+                        Admissions Open For <br>
+                        <span class="text-neon-jade">Classes 6th to 11th</span>
                     </h2>
-                    <p class="text-gray-300 text-sm leading-relaxed">
-                        We welcome applications for <strong>Class 6th to Class 11th</strong>. Our admission procedure is merit-based, clear, and inclusive for both local students and boarders across Manipur and Northeast India.
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        We welcome prospective Day Scholars and Boarders from Noney District and across Manipur. Our admissions process is transparent and aims to identify student aptitude and potential.
                     </p>
 
                     <div class="space-y-4 pt-2">
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                            <span class="w-10 h-10 rounded-xl bg-yellow-punk text-charcoal flex items-center justify-center font-bold text-lg">1</span>
+                        <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl">
+                            <span class="w-10 h-10 rounded-xl bg-ocean text-snowy-white font-display flex items-center justify-center font-bold text-base">01</span>
                             <div>
-                                <h4 class="font-bold text-sm">Step 1: Obtain Application Form</h4>
-                                <p class="text-xs text-gray-400">Available at school office, Khumji or submit online inquiry.</p>
+                                <h4 class="font-display font-bold text-sm text-snowy-white">Submit Online / Physical Inquiry</h4>
+                                <p class="text-xs text-slate-400">Available through the office or the form on this page.</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                            <span class="w-10 h-10 rounded-xl bg-red-orange text-snowy-white flex items-center justify-center font-bold text-lg">2</span>
+
+                        <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl">
+                            <span class="w-10 h-10 rounded-xl bg-neon-jade text-sapphire-dark font-display flex items-center justify-center font-bold text-base">02</span>
                             <div>
-                                <h4 class="font-bold text-sm">Step 2: Assessment & Interactive Session</h4>
-                                <p class="text-xs text-gray-400">Standard assessment in English, Mathematics, and General Aptitude.</p>
+                                <h4 class="font-display font-bold text-sm text-snowy-white">Entrance Evaluation & Interview</h4>
+                                <p class="text-xs text-slate-400">Basic diagnostic test in Math, English, and General Science.</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                            <span class="w-10 h-10 rounded-xl bg-yellow-punk text-charcoal flex items-center justify-center font-bold text-lg">3</span>
+
+                        <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-2xl">
+                            <span class="w-10 h-10 rounded-xl bg-ocean-light text-sapphire-dark font-display flex items-center justify-center font-bold text-base">03</span>
                             <div>
-                                <h4 class="font-bold text-sm">Step 3: Verification & Enrollment</h4>
-                                <p class="text-xs text-gray-400">Submit transfer certificates, marksheet, and secure hostel allotment.</p>
+                                <h4 class="font-display font-bold text-sm text-snowy-white">Confirmation & Hostel Allocation</h4>
+                                <p class="text-xs text-slate-400">Final documentation, marksheet submission, and bed assignment.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Online Registration Form -->
+                <!-- Registration Form -->
                 <div class="lg:col-span-6">
-                    <div class="bg-snowy-white text-charcoal p-8 md:p-10 rounded-3xl shadow-2xl border-t-8 border-red-orange">
-                        <h3 class="text-2xl font-black mb-1">Student Admission Inquiry</h3>
-                        <p class="text-xs text-gray-500 mb-6">Fill in the details below; our administrative office will respond within 24 hours.</p>
+                    <div class="bg-snowy-white text-slate-800 p-8 sm:p-10 rounded-3xl shadow-2xl border-t-8 border-ocean">
+                        <h3 class="font-display text-2xl font-extrabold text-sapphire mb-1">Student Admission Inquiry</h3>
+                        <p class="text-xs text-slate-500 mb-6">Fill in details for immediate follow-up from the administration office.</p>
 
                         <form id="admissionForm" class="space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold uppercase mb-1">Student Full Name *</label>
-                                    <input type="text" required placeholder="e.g. Lungshim Kamei" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange">
+                                    <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Student Name *</label>
+                                    <input type="text" required placeholder="Full Name" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean">
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold uppercase mb-1">Parent / Guardian Phone *</label>
-                                    <input type="tel" required placeholder="+91 98XXXXXXXX" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange">
+                                    <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Parent Phone *</label>
+                                    <input type="tel" required placeholder="+91 98XXXXXXXX" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-xs font-bold uppercase mb-1">Seeking Admission For *</label>
-                                    <select class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange font-medium">
+                                    <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Seeking Grade *</label>
+                                    <select class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean font-medium">
                                         <option value="6">Class 6th</option>
                                         <option value="7">Class 7th</option>
                                         <option value="8">Class 8th</option>
@@ -479,8 +532,8 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-xs font-bold uppercase mb-1">Residential Preference</label>
-                                    <select class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange font-medium">
+                                    <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Student Status</label>
+                                    <select class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean font-medium">
                                         <option value="day-scholar">Day Scholar</option>
                                         <option value="hostel-boarder">Hostel / Boarding Student</option>
                                     </select>
@@ -488,17 +541,18 @@
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold uppercase mb-1">Permanent Village / Town Address</label>
-                                <input type="text" placeholder="e.g. Khumji / Noney / Tamenglong / Imphal" class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange">
+                                <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Current Residence / Village</label>
+                                <input type="text" placeholder="e.g. Khumji / Noney Town / Tamenglong / Imphal" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean">
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold uppercase mb-1">Questions or Special Requests</label>
-                                <textarea rows="2" placeholder="Any queries regarding fee structure, hostel facilities, or syllabus..." class="w-full bg-gray-50 border border-gray-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-red-orange"></textarea>
+                                <label class="block text-xs font-display font-bold uppercase text-sapphire mb-1">Inquiry / Remarks</label>
+                                <textarea rows="2" placeholder="Fee query, hostel availability, or stream prerequisites..." class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-ocean"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full bg-yellow-punk hover:bg-yellow-punk-light text-charcoal font-black py-3.5 rounded-xl text-sm uppercase tracking-wider transition shadow-lg punk-glow">
-                                Submit Admission Inquiry
+                            <button type="submit" class="w-full bg-ocean hover:bg-ocean-dark text-snowy-white font-display font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition shadow-md flex items-center justify-center gap-2">
+                                <span>Submit Admission Request</span>
+                                <i class="fa-solid fa-paper-plane text-neon-jade text-xs"></i>
                             </button>
                         </form>
                     </div>
@@ -509,127 +563,129 @@
     </section>
 
     <!-- PHOTO GALLERY -->
-    <section id="gallery" class="py-20 bg-snowy-white">
+    <section id="gallery" class="py-24 bg-snowy-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14">
-                <span class="text-red-orange font-bold text-xs uppercase tracking-widest bg-red-orange/10 px-3 py-1 rounded-full">Campus Life in Pictures</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-charcoal mt-3">Moments at Berean Baptist Academy</h2>
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-ocean-dark bg-ocean/10 font-display font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">Gallery</span>
+                <h2 class="font-display text-3xl md:text-5xl font-extrabold text-sapphire mt-3">Campus Life at Khumji</h2>
             </div>
 
-            <!-- Gallery Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-red-orange transition">
+                
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
                     <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600&auto=format&fit=crop" alt="Campus Building" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">Academic Blocks & Courtyard</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Academic Complex & River Setting</span>
                     </div>
                 </div>
 
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-yellow-punk transition">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=600&auto=format&fit=crop" alt="Sports Playground Action" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">Annual Sports & Playground Activities</span>
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=600&auto=format&fit=crop" alt="Sports Field Action" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Playground & Athletics Matches</span>
                     </div>
                 </div>
 
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-red-orange transition">
-                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop" alt="Computer Lab Session" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">Interactive IT & Computer Classes</span>
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop" alt="Computer Lab" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Computer Practical Sessions</span>
                     </div>
                 </div>
 
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-yellow-punk transition">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="River Valley View" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">The Serene Riverbank at Khumji</span>
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=600&auto=format&fit=crop" alt="River in Hills" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Scenic River Basin at Khumji</span>
                     </div>
                 </div>
 
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-red-orange transition">
-                    <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?q=80&w=600&auto=format&fit=crop" alt="Morning Assembly" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">Daily Devotion & Morning Assembly</span>
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
+                    <img src="https://images.unsplash.com/photo-1511629091441-ee46146481b6?q=80&w=600&auto=format&fit=crop" alt="Morning Devotion" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Assembly & Christian Devotions</span>
                     </div>
                 </div>
 
-                <div class="relative group overflow-hidden rounded-2xl shadow-md h-64 border-2 border-transparent hover:border-yellow-punk transition">
+                <div class="relative group overflow-hidden rounded-3xl shadow-sm h-64 border border-slate-200">
                     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop" alt="Students in Classroom" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent flex items-end p-4">
-                        <span class="text-snowy-white text-xs font-bold">Collaborative Classroom Discussions</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-sapphire-dark/90 via-transparent to-transparent flex items-end p-5">
+                        <span class="font-display text-snowy-white text-xs font-bold tracking-wide">Collaborative Class Discussions</span>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- CONTACT & LOCATION -->
-    <section id="contact" class="py-20 bg-gray-50 border-t border-gray-200">
+    <section id="contact" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 
                 <!-- Contact info -->
                 <div class="lg:col-span-5 space-y-6">
-                    <span class="text-red-orange font-bold text-xs uppercase tracking-widest bg-red-orange/10 px-3 py-1 rounded-full">Get In Touch</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-charcoal">We’re Here to Assist You</h2>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Parents and guardians are cordially invited to visit our riverside campus in Khumji to meet with our teachers and tour the facilities.
+                    <span class="text-ocean-dark bg-ocean/10 font-display font-bold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full">Contact Office</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-extrabold text-sapphire">Connect With Us</h2>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        We welcome visits from parents, guardians, and prospective students to our riverside campus in Khumji, Noney.
                     </p>
 
                     <div class="space-y-4 pt-2">
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-red-orange text-snowy-white flex items-center justify-center shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-sapphire text-neon-jade flex items-center justify-center shrink-0">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-sm text-charcoal">Campus Address</h4>
-                                <p class="text-xs text-gray-600">Berean Baptist Academy, Khumji SPO-Longmei (Noney), Noney District, Manipur – 795159, India</p>
+                                <h4 class="font-display font-bold text-sm text-sapphire">School Location</h4>
+                                <p class="text-xs text-slate-600">Berean Baptist Academy, Khumji, SPO-Longmei (Noney), Noney District, Manipur – 795159, India</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-yellow-punk text-charcoal flex items-center justify-center shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-ocean text-snowy-white flex items-center justify-center shrink-0">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-sm text-charcoal">Phone Contact</h4>
-                                <p class="text-xs text-gray-600">+91 98620 XXXXX / Office Desk: +91 87940 XXXXX</p>
+                                <h4 class="font-display font-bold text-sm text-sapphire">Telephone & WhatsApp</h4>
+                                <p class="text-xs text-slate-600">+91 98620 XXXXX / +91 87940 XXXXX</p>
                             </div>
                         </div>
 
                         <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-charcoal text-snowy-white flex items-center justify-center shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-sapphire-dark text-ocean-light flex items-center justify-center shrink-0">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-sm text-charcoal">Official Email</h4>
-                                <p class="text-xs text-gray-600">admin@bereanacademykhumji.edu.in</p>
+                                <h4 class="font-display font-bold text-sm text-sapphire">Email Inquiries</h4>
+                                <p class="text-xs text-slate-600">info@bereanacademykhumji.edu.in</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Interactive Map / Info Panel -->
-                <div class="lg:col-span-7 bg-snowy-white p-6 rounded-3xl border border-gray-200 shadow-md">
-                    <div class="rounded-2xl overflow-hidden bg-gray-100 h-72 border relative flex items-center justify-center text-center p-6">
-                        <!-- Embedded Map Graphic/Representation -->
+                <!-- Location Map / Office Hours Panel -->
+                <div class="lg:col-span-7 bg-snowy-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="rounded-2xl overflow-hidden bg-ocean-surface h-72 border border-ocean/20 relative flex items-center justify-center text-center p-6">
                         <div class="space-y-2">
-                            <i class="fa-solid fa-map-location-dot text-4xl text-red-orange"></i>
-                            <h4 class="font-bold text-base text-charcoal">Scenic River Location - Khumji</h4>
-                            <p class="text-xs text-gray-500 max-w-sm">Situated right along the bank of the river, Khumji Village, Noney District, Manipur.</p>
-                            <a href="https://maps.google.com/?q=Khumji+Noney+Manipur" target="_blank" class="inline-block mt-3 bg-red-orange text-snowy-white px-4 py-2 rounded-lg text-xs font-bold uppercase hover:bg-red-orange-dark transition">
+                            <i class="fa-solid fa-map-location-dot text-4xl text-ocean"></i>
+                            <h4 class="font-display font-bold text-lg text-sapphire">Riverside Campus, Khumji</h4>
+                            <p class="text-xs text-slate-500 max-w-sm">Situated right along the scenic river in Khumji Village, Noney District, Manipur.</p>
+                            <a href="https://maps.google.com/?q=Khumji+Noney+Manipur" target="_blank" class="inline-block mt-3 bg-sapphire text-neon-jade px-4 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider hover:bg-sapphire-light transition">
                                 Open on Google Maps
                             </a>
                         </div>
                     </div>
+
                     <div class="grid grid-cols-2 gap-4 mt-6 text-center">
-                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                            <span class="block text-xs font-bold text-gray-400 uppercase">Office Hours</span>
-                            <span class="text-sm font-extrabold text-charcoal">Mon - Fri: 8:30 AM - 3:30 PM</span>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <span class="block text-xs font-display font-bold text-slate-400 uppercase">Office Hours</span>
+                            <span class="text-sm font-display font-extrabold text-sapphire">Mon – Fri: 8:30 AM – 3:30 PM</span>
                         </div>
-                        <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
-                            <span class="block text-xs font-bold text-gray-400 uppercase">Visiting Day</span>
-                            <span class="text-sm font-extrabold text-charcoal">Saturdays: 9:00 AM - 1:00 PM</span>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                            <span class="block text-xs font-display font-bold text-slate-400 uppercase">Saturday Hours</span>
+                            <span class="text-sm font-display font-extrabold text-sapphire">9:00 AM – 1:00 PM</span>
                         </div>
                     </div>
                 </div>
@@ -639,41 +695,42 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-charcoal text-snowy-white pt-16 pb-8 border-t-4 border-yellow-punk">
+    <footer class="bg-sapphire-dark text-snowy-white pt-16 pb-8 border-t-2 border-ocean">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                <!-- Col 1 -->
+                
+                <!-- School Info -->
                 <div class="space-y-4">
-                    <h3 class="font-display text-2xl tracking-wider text-snowy-white">
-                        BEREAN BAPTIST <span class="text-yellow-punk">ACADEMY</span>
+                    <h3 class="font-display text-2xl font-black text-snowy-white">
+                        BEREAN BAPTIST <span class="text-neon-jade">ACADEMY</span>
                     </h3>
-                    <p class="text-xs text-gray-400 leading-relaxed">
-                        A Christian co-educational secondary and senior secondary academy in Khumji, Noney, Manipur. Fostering faith, knowledge, and discipline in a peaceful river setting.
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        A Christian co-educational secondary and senior secondary institution located in Khumji, Noney, Manipur. Fostering faith, knowledge, and character in a peaceful river setting.
                     </p>
                     <div class="flex items-center space-x-3 text-sm">
-                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-yellow-punk hover:text-charcoal flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-yellow-punk hover:text-charcoal flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-yellow-punk hover:text-charcoal flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-neon-jade hover:text-sapphire-dark flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-neon-jade hover:text-sapphire-dark flex items-center justify-center transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/10 hover:bg-neon-jade hover:text-sapphire-dark flex items-center justify-center transition"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
 
-                <!-- Col 2: Quick Links -->
+                <!-- Navigation Links -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-yellow-punk mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-xs text-gray-300">
-                        <li><a href="#about" class="hover:text-red-orange transition">About the School</a></li>
-                        <li><a href="#academics" class="hover:text-red-orange transition">Academic Curriculum (6th - 12th)</a></li>
-                        <li><a href="#facilities" class="hover:text-red-orange transition">Campus & Computer Lab</a></li>
-                        <li><a href="#admissions" class="hover:text-red-orange transition">Admission Guidelines</a></li>
-                        <li><a href="#contact" class="hover:text-red-orange transition">Reach Out to Us</a></li>
+                    <h4 class="font-display text-xs font-bold uppercase tracking-wider text-neon-jade mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#about" class="hover:text-ocean-light transition">About Academy</a></li>
+                        <li><a href="#academics" class="hover:text-ocean-light transition">Academics (6th - 12th)</a></li>
+                        <li><a href="#facilities" class="hover:text-ocean-light transition">Campus & Computer Lab</a></li>
+                        <li><a href="#admissions" class="hover:text-ocean-light transition">Admission Guidelines</a></li>
+                        <li><a href="#contact" class="hover:text-ocean-light transition">Location & Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Academic Classes -->
+                <!-- Classes Offered -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-yellow-punk mb-4">Programs</h4>
-                    <ul class="space-y-2 text-xs text-gray-300">
-                        <li>Class 6th to 8th (Middle School)</li>
+                    <h4 class="font-display text-xs font-bold uppercase tracking-wider text-neon-jade mb-4">Class Levels</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li>Class 6th – 8th (Middle School)</li>
                         <li>Class 9th & 10th (High School)</li>
                         <li>Class 11th & 12th (Senior Sec Science)</li>
                         <li>Class 11th & 12th (Senior Sec Arts)</li>
@@ -681,31 +738,31 @@
                     </ul>
                 </div>
 
-                <!-- Col 4: Newsletter -->
+                <!-- Newsletter / Circulars -->
                 <div>
-                    <h4 class="text-sm font-bold uppercase tracking-wider text-yellow-punk mb-4">Stay Informed</h4>
-                    <p class="text-xs text-gray-400 mb-3">Sign up for circulars, exam notifications, and school announcements.</p>
-                    <form class="space-y-2" onsubmit="event.preventDefault(); alert('Subscribed for updates!');">
-                        <input type="email" required placeholder="Enter parent email address" class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-snowy-white placeholder-gray-400 focus:outline-none focus:border-yellow-punk">
-                        <button type="submit" class="w-full bg-red-orange hover:bg-red-orange-dark text-snowy-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition">
+                    <h4 class="font-display text-xs font-bold uppercase tracking-wider text-neon-jade mb-4">Official Circulars</h4>
+                    <p class="text-xs text-slate-400 mb-3">Sign up for academic notices and parent updates.</p>
+                    <form class="space-y-2" onsubmit="event.preventDefault(); alert('Subscribed to notifications!');">
+                        <input type="email" required placeholder="Parent's email address" class="w-full bg-white/10 border border-white/20 rounded-xl px-3.5 py-2 text-xs text-snowy-white placeholder-slate-400 focus:outline-none focus:border-neon-jade">
+                        <button type="submit" class="w-full bg-ocean hover:bg-ocean-dark text-snowy-white font-display font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition">
                             Subscribe
                         </button>
                     </form>
                 </div>
             </div>
 
-            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-400 gap-4">
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
                 <p>© 2026 Berean Baptist Academy, Khumji, Noney, Manipur. All Rights Reserved.</p>
                 <div class="flex space-x-6">
                     <a href="#" class="hover:underline">Privacy Policy</a>
-                    <a href="#" class="hover:underline">Terms of Enrollment</a>
+                    <a href="#" class="hover:underline">Academic Terms</a>
                     <a href="#" class="hover:underline">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- MOBILE NAVIGATION TOGGLE SCRIPT -->
+    <!-- MOBILE MENU SCRIPT & FORM HANDLER -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -714,17 +771,15 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu on clicking a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
 
-        // Admission form interaction
         document.getElementById('admissionForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you! Your admission inquiry for Berean Baptist Academy has been submitted. Our office will contact you soon.');
+            alert('Thank you! Your admission inquiry for Berean Baptist Academy has been submitted successfully. The school administration in Khumji will contact you shortly.');
             this.reset();
         });
     </script>
